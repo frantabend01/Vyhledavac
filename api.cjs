@@ -12,7 +12,6 @@ async function fetchUnitTestResults(query, apiKey, cx){
     if(!resp.ok) throw new Error(`Chyba při načítání dat: ${resp.statusText}`);
     const data = await resp.json();
     return data.items || [];
-
 }
 
 module.exports = { fetchUnitTestResults };

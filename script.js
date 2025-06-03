@@ -4,30 +4,33 @@ class App{
     constructor() {
         this.apiKey = null; // Nulové hodnoty, public repo, v provozu se dosadí z node.env nebo přímo string
         this.cx = null;  // Nulové hodnoty, public repo, v provozu se dosadí z node.env nebo přímo string
-
     }
 
     /**
      * Vytvoření UI
+     * - container
+     * - input group
      * - input 
      * - tlačítko pro vyhledávání 
      */
     start(){
         // console.warn("připojeno");
-        const $container = $('<div class="container" mt-5 border></div>');
-        const $input = $('<input type="text" class="form-control" placeholder="Zadejte text">');
-        const $button = $('<button class="btn btn-primary mt-2">Klikni mě</button>');
-        $input.appendTo($container);
-        $button.appendTo($container);
+        const $container = $('<div class="container mt-5 d-flex justify-content-center"></div>');
+        const $inputGroup = $('<div class="input-group"></div>');
+        const $input = $('<input type="text" class="form-control" placeholder="Zadejte text" name="query">');
+        const $button = $('<button class="btn btn-primary">Klikni mě</button>');
+        $input.appendTo($inputGroup);
+        $button.appendTo($inputGroup);
+        $inputGroup.appendTo($container);
         $container.appendTo('#main');
-        this.$result = $('<div class="result mt-3"></div>');
-        this.$result.appendTo($container);
+        this.$result = $('<div class="result mt-3 text-center"></div>');
+        this.$result.appendTo('#main');
         $button.on('click', () => {
             const text = $input.val();
             if (text) {
                 this.search(text);
             } else {
-                alert('Prosím zadej nějaký text.');
+                alert('Prosím zadejte nějaký text.');
             }
         });
         //Odesílání enterem
