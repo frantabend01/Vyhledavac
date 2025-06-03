@@ -2,8 +2,8 @@ import { fetchResults } from './api.js';
 
 class App{
     constructor() {
-        this.apiKey = null; // Nulové hodnoty, public repo, v provozu se dosadí z node.env nebo přímo string
-        this.cx = null;  // Nulové hodnoty, public repo, v provozu se dosadí z node.env nebo přímo string
+        // this.apiKey = null; // Nulové hodnoty, public repo, v provozu se dosadí z node.env nebo přímo string
+        // this.cx = null;  // Nulové hodnoty, public repo, v provozu se dosadí z node.env nebo přímo string
     }
 
     /**
@@ -52,7 +52,8 @@ class App{
     async search(query) {
         this.$result.empty();
         try{
-            const data = await fetchResults(query, this.apiKey, this.cx); //voláme importovaný modul fetch
+            // const data = await fetchResults(query, this.apiKey, this.cx); //voláme importovaný modul fetch
+            const data = await fetchResults(query);
             console.warn("Data:", data);
                 if(data.length > 0){
                 this.$downloadBtn = $('<button class="btn btn-success mt-3">Stáhnout JSON</button>');
