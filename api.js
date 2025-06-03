@@ -7,7 +7,7 @@
  * @throws {Error} Pokud dojde k chybě při načítání dat
  */
 export async function fetchResults(query, apiKey, cx){
-    const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${encodeURIComponent(query)}`;
+  const url = `/api/search?q=${encodeURIComponent(query)}`;
     const resp = await fetch(url);
     if(!resp.ok) throw new Error(`Chyba při načítání dat: ${resp.statusText}`);
     const data = await resp.json();
